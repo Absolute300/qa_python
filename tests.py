@@ -36,4 +36,16 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Робинзон Крузо')
         collector.set_book_genre('Робинзон Крузо', 'Ужасы')
-        assert collector.get_books_genre() == {'Робинзон Крузо': 'Ужасы'}               
+        assert collector.get_books_genre() == {'Робинзон Крузо': 'Ужасы'}      
+
+    def test_set_book_genre_to_not_existing_book(self):
+        collector = BooksCollector()
+        collector.set_book_genre('Робинзон Крузо', 'Ужасы')
+        assert collector.get_books_genre() == {}
+
+
+    def test_set_book_genre_to_not_existing_genre(self):
+        collector = BooksCollector()
+        collector.add_new_book('Робинзон Крузо')
+        collector.set_book_genre('Робинзон Крузо', 'Фэнтези')
+        assert collector.get_books_genre() == {'Робинзон Крузо': ''}                
