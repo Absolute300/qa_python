@@ -67,4 +67,7 @@ class TestBooksCollector:
         assert collector.get_books_with_specific_genre(genre) == [name]     
 
     def test_get_books_with_specific_genre_by_wrong_genre(self, my_books_collection):
-        assert len(my_books_collection.get_books_with_specific_genre('Фэнтези')) == 0          
+        assert len(my_books_collection.get_books_with_specific_genre('Фэнтези')) == 0    
+
+    def test_get_books_for_children(self, my_books_collection):
+        assert len(my_books_collection.get_books_for_children()) == 3 and my_books_collection.get_books_for_children() == ['Великий Гэтсби', 'Гарри Поттер', 'Джуманджи']           
