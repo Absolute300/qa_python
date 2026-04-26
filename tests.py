@@ -2,6 +2,9 @@ import pytest
 from main import BooksCollector
 
 class TestBooksCollector:
+    @pytest.fixture
+    def books_collection(self):
+        return BooksCollector()    
 
 
     def test_add_new_book_add_two_books(self):
