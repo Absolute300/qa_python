@@ -1,15 +1,8 @@
 from main import BooksCollector
-
-# класс TestBooksCollector объединяет набор тестов, которыми мы покрываем наше приложение BooksCollector
-# обязательно указывать префикс Test
 class TestBooksCollector:
 
-    # пример теста:
-    # обязательно указывать префикс test_
-    # дальше идет название метода, который тестируем add_new_book_
-    # затем, что тестируем add_two_books - добавление двух книг
+
     def test_add_new_book_add_two_books(self):
-        # создаем экземпляр (объект) класса BooksCollector
         collector = BooksCollector()
 
         # добавляем две книги
