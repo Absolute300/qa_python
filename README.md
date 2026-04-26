@@ -13,7 +13,6 @@ test_set_book_genre_to_not_existing_genre: негативная проверка
 test_get_book_genre_by_name: проверка на вывод жанра книги по ее имени
 test_get_books_with_specific_genre_by_genre: проверка на вывод книг по жанру
 test_get_books_with_specific_genre_by_wrong_genre: негативная проверка на вывод книг по жанру НЕ из genre
-test_get_books_for_children: проверка на вывод детских книг
 test_add_book_in_favorites_not_added_in_favorites_book: проверка на добавление книги в избранное
 test_add_book_in_favorites_added_in_favorites_book: негативная проверка на повторное добавление книги в избранное
 test_add_book_in_favorites_not_added_dict_book: негативная проверка на добавление книги НЕ из books_genre
