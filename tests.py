@@ -14,9 +14,9 @@ class TestBooksCollector:
 
     def test_add_new_book_already_added_book(self):
         collector = BooksCollector()
-        collector.add_new_book('Гордость и предубеждение')
-        collector.add_new_book('Гордость и предубеждение')
-        assert collector.get_books_genre() == {'Гордость и предубеждение': ''}
+        collector.add_new_book('Робинзон Крузо')
+        collector.add_new_book('Робинзон Крузо')
+        assert collector.get_books_genre() == {'Робинзон Крузо': ''}
 
     @pytest.mark.parametrize('name', ['',
                                       'Сказка о царе Салтане, о сыне его славном и могучем богат',
@@ -30,4 +30,10 @@ class TestBooksCollector:
                                       'Оно'])
     def test_add_new_book_name_in_the_range(self, name, books_collection):
         books_collection.add_new_book(name)
-        assert name in books_collection.get_books_genre()        
+        assert name in books_collection.get_books_genre() 
+
+    def test_set_book_genre_to_existing_book(self):
+        collector = BooksCollector()
+        collector.add_new_book('Робинзон Крузо')
+        collector.set_book_genre('Робинзон Крузо', 'Ужасы')
+        assert collector.get_books_genre() == {'Робинзон Крузо': 'Ужасы'}               
