@@ -1,17 +1,19 @@
+import pytest
 from main import BooksCollector
+
 class TestBooksCollector:
 
 
     def test_add_new_book_add_two_books(self):
         collector = BooksCollector()
-
-        # добавляем две книги
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
+        assert collector.get_books_genre() == {'Гордость и предубеждение и зомби': '',
+                                               'Что делать, если ваш кот хочет вас убить': ''}
 
-        # проверяем, что добавилось именно две
-        # словарь books_rating, который нам возвращает метод get_books_rating, имеет длину 2
-        assert len(collector.get_books_rating()) == 2
 
-    # напиши свои тесты ниже
-    # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
+    def test_add_new_book_already_added_book(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение')
+        collector.add_new_book('Гордость и предубеждение')
+        assert collector.get_books_genre() == {'Гордость и предубеждение': ''}
