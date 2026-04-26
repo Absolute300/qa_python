@@ -80,3 +80,8 @@ class TestBooksCollector:
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
         assert 'Великий Гэтсби' in my_books_collection.get_list_of_favorites_books() and len(my_books_collection.get_list_of_favorites_books()) == 1        
+
+    def test_add_book_in_favorites_not_added_dict_book(self, my_books_collection):
+        book = 'Мастер и Маргарита'
+        my_books_collection.add_book_in_favorites(book)
+        assert len(my_books_collection.get_list_of_favorites_books()) == 0        
