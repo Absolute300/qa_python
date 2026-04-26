@@ -64,4 +64,7 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book(name)
         collector.set_book_genre(name, genre)
-        assert collector.get_books_with_specific_genre(genre) == [name]        
+        assert collector.get_books_with_specific_genre(genre) == [name]     
+
+    def test_get_books_with_specific_genre_by_wrong_genre(self, my_books_collection):
+        assert len(my_books_collection.get_books_with_specific_genre('Фэнтези')) == 0          
