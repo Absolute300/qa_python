@@ -70,4 +70,13 @@ class TestBooksCollector:
         assert len(my_books_collection.get_books_with_specific_genre('Фэнтези')) == 0    
 
     def test_get_books_for_children(self, my_books_collection):
-        assert len(my_books_collection.get_books_for_children()) == 3 and my_books_collection.get_books_for_children() == ['Великий Гэтсби', 'Гарри Поттер', 'Джуманджи']           
+        assert len(my_books_collection.get_books_for_children()) == 3 and my_books_collection.get_books_for_children() == ['Великий Гэтсби', 'Гарри Поттер', 'Джуманджи']  
+
+    def test_add_book_in_favorites_not_added_in_favorites_book(self, my_books_collection):
+        my_books_collection.add_book_in_favorites('Великий Гэтсби')
+        assert 'Великий Гэтсби' in my_books_collection.get_list_of_favorites_books() and len(my_books_collection.get_list_of_favorites_books()) == 1
+
+    def test_add_book_in_favorites_added_in_favorites_book(self, my_books_collection):
+        my_books_collection.add_book_in_favorites('Великий Гэтсби')
+        my_books_collection.add_book_in_favorites('Великий Гэтсби')
+        assert 'Великий Гэтсби' in my_books_collection.get_list_of_favorites_books() and len(my_books_collection.get_list_of_favorites_books()) == 1        
