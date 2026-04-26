@@ -84,4 +84,9 @@ class TestBooksCollector:
     def test_add_book_in_favorites_not_added_dict_book(self, my_books_collection):
         book = 'Мастер и Маргарита'
         my_books_collection.add_book_in_favorites(book)
-        assert len(my_books_collection.get_list_of_favorites_books()) == 0        
+        assert len(my_books_collection.get_list_of_favorites_books()) == 0   
+
+    def test_delete_book_from_favorites(self, my_books_collection):
+        my_books_collection.add_book_in_favorites('Великий Гэтсби')
+        my_books_collection.delete_book_from_favorites('Великий Гэтсби')
+        assert len(my_books_collection.get_list_of_favorites_books()) == 0             
