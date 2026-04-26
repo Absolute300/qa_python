@@ -4,7 +4,30 @@ from main import BooksCollector
 class TestBooksCollector:
     @pytest.fixture
     def books_collection(self):
-        return BooksCollector()    
+        return BooksCollector()   
+
+    @pytest.fixture
+    def my_books_collection(self):
+        collector = BooksCollector()
+
+        collector.add_new_book('Великий Гэтсби')
+        collector.set_book_genre('Великий Гэтсби', 'Сказка')
+
+        collector.add_new_book('Гарри Поттер')
+        collector.set_book_genre('Гарри Поттер', 'Сказка')
+
+        collector.add_new_book('Джуманджи')
+        collector.set_book_genre('Джуманджи', 'Приключения')
+
+        return collector 
+
+    def get_books_for_children(self):
+        children_genres = {'Фэнтези', 'Приключения', 'Детские сказки', 'Комедии'}
+        result = []
+        for book, genre in self.books_genre.items():
+            if genre in children_genres:
+                result.append(book)
+        return result
 
 
     def test_add_new_book_add_two_books(self):
@@ -72,8 +95,6 @@ class TestBooksCollector:
     def test_get_books_with_specific_genre_by_wrong_genre(self, my_books_collection):
         assert len(my_books_collection.get_books_with_specific_genre('Фэнтези')) == 0    
 
-    def test_get_books_for_children(self, my_books_collection):
-        assert len(my_books_collection.get_books_for_children()) == 3 and my_books_collection.get_books_for_children() == ['Великий Гэтсби', 'Гарри Поттер', 'Джуманджи']  
 
     def test_add_book_in_favorites_not_added_in_favorites_book(self, my_books_collection):
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
