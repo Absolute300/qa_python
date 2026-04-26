@@ -17,3 +17,10 @@ class TestBooksCollector:
         collector.add_new_book('Гордость и предубеждение')
         collector.add_new_book('Гордость и предубеждение')
         assert collector.get_books_genre() == {'Гордость и предубеждение': ''}
+
+    @pytest.mark.parametrize('name', ['',
+                                      'Сказка о царе Салтане, о сыне его славном и могучем богат',
+                                      'Сказка о царе Салтане, о сыне его славном и могучем богатыре Гвидоне Салтановиче и о прекрасной царевне Лебеди'])
+    def test_add_new_book_name_out_of_range(self, name, books_collection):
+        books_collection.add_new_book(name)
+        assert len(books_collection.get_books_genre()) == 0       
