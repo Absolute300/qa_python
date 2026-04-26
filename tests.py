@@ -23,4 +23,11 @@ class TestBooksCollector:
                                       'Сказка о царе Салтане, о сыне его славном и могучем богатыре Гвидоне Салтановиче и о прекрасной царевне Лебеди'])
     def test_add_new_book_name_out_of_range(self, name, books_collection):
         books_collection.add_new_book(name)
-        assert len(books_collection.get_books_genre()) == 0       
+        assert len(books_collection.get_books_genre()) == 0   
+
+    @pytest.mark.parametrize('name', ['Отверженные',
+                                      'Над пропастью во ржи',
+                                      'Оно'])
+    def test_add_new_book_name_in_the_range(self, name, books_collection):
+        books_collection.add_new_book(name)
+        assert name in books_collection.get_books_genre()        
