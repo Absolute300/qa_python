@@ -49,3 +49,11 @@ class TestBooksCollector:
         collector.add_new_book('Робинзон Крузо')
         collector.set_book_genre('Робинзон Крузо', 'Фэнтези')
         assert collector.get_books_genre() == {'Робинзон Крузо': ''}                
+
+    @pytest.mark.parametrize('name, genre', [('Гордость и предубеждение и зомби', 'Ужасы'),
+                                             ('Что делать, если ваш кот хочет вас убить', 'Комедии')])
+    def test_get_book_genre_by_name(self, name, genre):
+        collector = BooksCollector()
+        collector.add_new_book(name)
+        collector.set_book_genre(name, genre)
+        assert collector.get_book_genre(name) == genre     
