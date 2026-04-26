@@ -94,4 +94,9 @@ class TestBooksCollector:
     def test_delete_book_from_favorites_deleted_book(self, my_books_collection):
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
         my_books_collection.delete_book_from_favorites('Гарри Поттер')
-        assert len(my_books_collection.get_list_of_favorites_books()) == 1 and 'Гарри Поттер' not in my_books_collection.get_list_of_favorites_books()               
+        assert len(my_books_collection.get_list_of_favorites_books()) == 1 and 'Гарри Поттер' not in my_books_collection.get_list_of_favorites_books()    
+
+    def test_get_list_of_favorites_books(self, my_books_collection):
+        my_books_collection.add_book_in_favorites('Великий Гэтсби')
+        my_books_collection.add_book_in_favorites('Гарри Поттер')
+        assert my_books_collection.get_list_of_favorites_books() == ['Великий Гэтсби', 'Гарри Поттер']            
