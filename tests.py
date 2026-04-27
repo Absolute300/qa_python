@@ -92,32 +92,39 @@ class TestBooksCollector:
         collector.set_book_genre(name, genre)
         assert collector.get_books_with_specific_genre(genre) == [name]     
 
+
     def test_get_books_with_specific_genre_by_wrong_genre(self, my_books_collection):
         assert len(my_books_collection.get_books_with_specific_genre('Фэнтези')) == 0    
+
 
     def test_add_book_in_favorites_not_added_in_favorites_book(self, my_books_collection):
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
         assert 'Великий Гэтсби' in my_books_collection.get_list_of_favorites_books() and len(my_books_collection.get_list_of_favorites_books()) == 1
+
 
     def test_add_book_in_favorites_added_in_favorites_book(self, my_books_collection):
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
         assert 'Великий Гэтсби' in my_books_collection.get_list_of_favorites_books() and len(my_books_collection.get_list_of_favorites_books()) == 1        
 
+
     def test_add_book_in_favorites_not_added_dict_book(self, my_books_collection):
         book = 'Мастер и Маргарита'
         my_books_collection.add_book_in_favorites(book)
         assert len(my_books_collection.get_list_of_favorites_books()) == 0   
+
 
     def test_delete_book_from_favorites(self, my_books_collection):
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
         my_books_collection.delete_book_from_favorites('Великий Гэтсби')
         assert len(my_books_collection.get_list_of_favorites_books()) == 0      
 
+
     def test_delete_book_from_favorites_deleted_book(self, my_books_collection):
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
         my_books_collection.delete_book_from_favorites('Гарри Поттер')
         assert len(my_books_collection.get_list_of_favorites_books()) == 1 and 'Гарри Поттер' not in my_books_collection.get_list_of_favorites_books()    
+
 
     def test_get_list_of_favorites_books(self, my_books_collection):
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
