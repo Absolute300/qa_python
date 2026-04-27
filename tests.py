@@ -95,7 +95,6 @@ class TestBooksCollector:
     def test_get_books_with_specific_genre_by_wrong_genre(self, my_books_collection):
         assert len(my_books_collection.get_books_with_specific_genre('Фэнтези')) == 0    
 
-
     def test_add_book_in_favorites_not_added_in_favorites_book(self, my_books_collection):
         my_books_collection.add_book_in_favorites('Великий Гэтсби')
         assert 'Великий Гэтсби' in my_books_collection.get_list_of_favorites_books() and len(my_books_collection.get_list_of_favorites_books()) == 1
